@@ -1,0 +1,167 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #003B5C;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header img {
+    width: 50px;
+    vertical-align: middle;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+
+#image-slider {
+    position: relative;
+    max-width: 800px; 
+    margin: auto;
+    overflow: hidden;
+}
+
+.slider {
+    position: relative;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    min-width: 100%; 
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+}
+
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+
+#search {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#search form {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+#search input[type="text"] {
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+#search input[type="text"]:focus {
+    border-color: #003B5C;
+    outline: none;
+}
+
+#search button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #003B5C;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#search button:hover {
+    background-color: #005a8c;
+}
+
+#searchResults {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#searchResults li {
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #e7f3ff; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+#searchResults li a {
+    color: #003B5C;
+    text-decoration: underline;
+}
+
+#searchResults li a:hover {
+    color: #005a8c;
+}
+
+
+#overview {
+    margin-top: 20px;
+}
+
+#overview h2 {
+    color: #003B5C;
+}
+
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #003B5C;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

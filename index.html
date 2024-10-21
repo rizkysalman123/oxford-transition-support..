@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oxford Transition Support</title>
+    <link rel="stylesheet" href="coba2.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Oxford Logo">
+        <h1>UNIVERSITY OF OXFORD</h1>
+        <nav>
+            <ul>
+                <li><a href="overview.html">Overview</a></li>
+                <li><a href="about.html">About Oxford</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="news.html">News</a></li> 
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="hero">
+            <div id="image-slider">
+                <div class="slider">
+                    <div class="slides">
+                        <div class="slide active">
+                            <img src="oxford.webp" alt="Image 1">
+                        </div>
+                        <div class="slide">
+                            <img src="perpustakaan.jpg" alt="Image 2">
+                        </div>
+                        <div class="slide">
+                            <img src="jalan.avif" alt="Image 3">
+                        </div>
+                    </div>
+                    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="search">
+            <form onsubmit="return searchSite()" method="get">
+                <input type="text" id="searchQuery" placeholder="Search..." aria-label="Search">
+                <button type="submit">Search</button>
+            </form>
+            <ul id="searchResults"></ul>
+        </section>
+
+        <section id="overview">
+            <h2>Overview</h2>
+            <p>Welcome to Oxford! This guide provides essential information for new students.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Oxford University. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const siteData = [
+            { title: "Overview", content: "Welcome to Oxford! This guide provides essential information for new students.", url: "index.html" },
+            { title: "About Oxford", content: "Universitas Oxford adalah salah satu universitas tertua di dunia.", url: "about.html" },
+            { title: "Resources", content: "Find mental health support, academic resources, and student services.", url: "resources.html" },
+            { title: "News", content: "Latest news and updates from Oxford University.", url: "news.html" },
+            { title: "Contact Us", content: "Feel free to email us for support.", url: "contact.html" }
+        ];
+
+        function searchSite() {
+            const query = document.getElementById('searchQuery').value.toLowerCase();
+            const results = document.getElementById('searchResults');
+            results.innerHTML = ''; 
+
+            const filteredData = siteData.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.content.toLowerCase().includes(query)
+            );
+
+            if (filteredData.length > 0) {
+                filteredData.forEach(item => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<a href="${item.url}">${item.title}</a> - ${item.content}`;
+                    results.appendChild(li);
+                });
+            } else {
+                results.innerHTML = '<li>No results found</li>';
+            }
+
+            return false;
+        }
+
+        let currentSlide = 0;
+
+        function changeSlide(direction) {
+            const slides = document.querySelectorAll('.slide');
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+
+          
+            const slidesContainer = document.querySelector('.slides');
+            slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+       
+        setInterval(() => changeSlide(1), 5000);
+    </script>
+</body>
+</html>
